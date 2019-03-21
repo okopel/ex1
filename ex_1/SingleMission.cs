@@ -33,11 +33,14 @@ namespace Excercise_1
         {
             this.name = name;
             this.function = function;
+            this.type = "Single";
         }
        
         public double Calculate(double value)
         {
-            return this.function(value);
+            double res= this.function(value);
+            OnCalculate?.Invoke(this, res);
+            return res; 
         }
         
         

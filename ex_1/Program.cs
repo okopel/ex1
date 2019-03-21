@@ -42,7 +42,6 @@ namespace Excercise_1
             EventHandler<double> LogHandler = (sender, val) =>
             {
                 IMission mission = sender as IMission;
-
                 if (mission != null)
                 {
                     Console.WriteLine($"Mission of Type: {mission.Type} with the Name {mission.Name} returned {val}");
@@ -82,16 +81,16 @@ namespace Excercise_1
                 .Add(funcList["Plus2"]);
 
             PrintAvailableFunctions(funcList);
-
             funcList["Stam"] = val => val + 100;
             SingleMission mission5 = new SingleMission(funcList["Stam"], "mission5");
 
             var missionList = new List<IMission>() { mission1, mission2, mission3, mission4, mission5 };
-
+            
             foreach (var m in missionList)
             {
                 m.OnCalculate += LogHandler;
                 m.OnCalculate += SqrtHandler;
+
             }
 
             missionList.Add(mission2);
@@ -99,11 +98,11 @@ namespace Excercise_1
             missionList.Add(mission3);
             missionList.Add(mission5);
 
+
             RunMissions(missionList, 100);
             RunMissions(missionList, 2);
 
             PrintAvailableFunctions(funcList);
-            int x=Console.Read();
         }//end of main
     }
 }

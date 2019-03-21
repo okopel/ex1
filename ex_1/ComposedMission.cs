@@ -36,7 +36,9 @@ namespace Excercise_1
         {
             this.name = name;
             this.functions = new Queue<Function>();
-           
+            this.type = "Composed";
+
+
         }
         public ComposedMission Add(Function f)
         {
@@ -52,6 +54,7 @@ namespace Excercise_1
             {
                 result = f(result);
             }
+            OnCalculate?.Invoke(this, result);
             return result;
         }
     }
